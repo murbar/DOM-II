@@ -354,3 +354,15 @@ img {
 .tilt {
   transform: rotate(7deg);
 }
+
+.italic {
+  font-style: italic;
+}
+
+.home .content-pick .destination .orange {
+  background: orange;
+}
+
+.home .content-pick .destination .orange:hover {
+  background: yellow;
+}

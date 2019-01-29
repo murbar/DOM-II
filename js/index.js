@@ -81,3 +81,18 @@ headerImg.addEventListener('dragend', e => {
 window.addEventListener('resize', () => {
     document.body.style.backgroundColor = randomHsl();
 });
+
+// stop propagation demo
+// a click on the button div does not trigger click event set on the enclosing container
+const bottomContent = document.querySelector('.content-pick');
+console.log(bottomContent);
+const bottomContentBtns = document.querySelectorAll('.content-pick .btn');
+bottomContent.addEventListener('click', e => {
+    bottomContent.classList.toggle('italic');
+});
+bottomContentBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        btn.classList.toggle('orange');
+        e.stopPropagation();
+    });
+});
