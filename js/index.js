@@ -1,11 +1,12 @@
-// stop nav links from refreshing the page
 // 1 - click
+// stop nav links from refreshing the page
 const nav = document.querySelector('nav');
 nav.addEventListener('click', e => {
     e.preventDefault();
 })
 
 // 2 - wheel
+// use scroll wheel on menu items to zoom text in and out
 const navLinks = document.querySelectorAll('nav a');
 navLinks.forEach(l => {
     l.addEventListener('wheel', e => {
@@ -20,6 +21,7 @@ navLinks.forEach(l => {
 });
 
 // 3 & 4 - mouseenter, mouseleave
+// tilt images in a .content-section on mouse over, reset on mouse out
 const contentImgs = document.querySelectorAll('.content-section img');
 contentImgs.forEach(img => {
     img.addEventListener('mouseenter', () => img.classList.add('tilt'));
@@ -30,20 +32,26 @@ function randomHsl() {
     return `hsla(${(Math.random() * 360)}, 100%, 50%, 1)`;
 }
 
-// 5 - dblclick
+// 5 & 6 - dblclick, contextmenu
+// double click paragraphs to set font color to random value, right-click to reset
 const paragraphs = document.querySelectorAll('p');
 paragraphs.forEach(p => {
-    p.addEventListener('dblclick', e => p.removeAttribute('style'));
-    p.addEventListener('click', e => p.style.color = randomHsl());
+    p.addEventListener('dblclick', e => p.style.color = randomHsl());
+    p.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        p.removeAttribute('style')
+    });
 });
 
-// 6 - scroll
+// 7 - scroll
+// spin second img in main section on page scroll
 const secondBodyImg = document.querySelector('.inverse-content img');
 window.addEventListener('scroll', e => {
     secondBodyImg.style.transform = `rotate(${window.scrollY / 5}deg)`
 });
 
-// 7 - keyup
+// 8 - keyup
+// set logo text content to last key pressed, press ESC to reset
 const logotype = document.querySelector('header h1');
 window.addEventListener('keyup', e => {
     if (e.key === "Escape") {
@@ -53,7 +61,8 @@ window.addEventListener('keyup', e => {
     }
 });
 
-// 8 & 9 - drag, dragend
+// 9 & 10 - drag, dragend
+// drag header image to flip vertically
 const headerImg = document.querySelector('.intro img');
 let flipped = false;
 headerImg.addEventListener('drag', e=> {
@@ -65,4 +74,10 @@ headerImg.addEventListener('drag', e=> {
 });
 headerImg.addEventListener('dragend', e => {
     flipped = !flipped;
+});
+
+// bonus - resize
+// set page bg color to random value on window resize
+window.addEventListener('resize', () => {
+    document.body.style.backgroundColor = randomHsl();
 });
