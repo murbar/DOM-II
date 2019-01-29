@@ -7,8 +7,8 @@ nav.addEventListener('click', e => {
 
 const contentImgs = document.querySelectorAll('.content-section img');
 contentImgs.forEach(img => {
-    img.addEventListener('mouseenter', e => e.target.classList.add('tilt'));
-    img.addEventListener('mouseleave', e => e.target.classList.remove('tilt'));
+    img.addEventListener('mouseenter', () => img.classList.add('tilt'));
+    img.addEventListener('mouseleave', () => img.classList.remove('tilt'));
 });
 
 function randomHsl() {
