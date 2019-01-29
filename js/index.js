@@ -52,3 +52,17 @@ window.addEventListener('keyup', e => {
         logotype.textContent = e.key;
     }
 });
+
+// 8 & 9 - drag, dragend
+const headerImg = document.querySelector('.intro img');
+let flipped = false;
+headerImg.addEventListener('drag', e=> {
+    if (!flipped) {
+        headerImg.style.transform = 'rotate(180deg)';
+    } else {
+        headerImg.removeAttribute('style');
+    }
+});
+headerImg.addEventListener('dragend', e => {
+    flipped = !flipped;
+});
