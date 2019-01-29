@@ -1,9 +1,11 @@
 // stop nav links from refreshing the page
+// 1 - click
 const nav = document.querySelector('nav');
 nav.addEventListener('click', e => {
     e.preventDefault();
 })
 
+// 2 - wheel
 const navLinks = document.querySelectorAll('nav a');
 navLinks.forEach(l => {
     l.addEventListener('wheel', e => {
@@ -17,6 +19,7 @@ navLinks.forEach(l => {
     });
 });
 
+// 3 & 4 - mouseenter, mouseleave
 const contentImgs = document.querySelectorAll('.content-section img');
 contentImgs.forEach(img => {
     img.addEventListener('mouseenter', () => img.classList.add('tilt'));
@@ -27,12 +30,9 @@ function randomHsl() {
     return `hsla(${(Math.random() * 360)}, 100%, 50%, 1)`;
 }
 
+// 5 - dblclick
 const paragraphs = document.querySelectorAll('p');
 paragraphs.forEach(p => {
-    p.addEventListener('dblclick', e => {
-        e.target.style.color = 'black';
-    });
-    p.addEventListener('click', e => {
-        e.target.style.color = randomHsl();
-    });
+    p.addEventListener('dblclick', e => p.removeAttribute('style'));
+    p.addEventListener('click', e => p.style.color = randomHsl());
 });
