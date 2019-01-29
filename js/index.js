@@ -36,3 +36,9 @@ paragraphs.forEach(p => {
     p.addEventListener('dblclick', e => p.removeAttribute('style'));
     p.addEventListener('click', e => p.style.color = randomHsl());
 });
+
+// 6 - scroll
+const secondBodyImg = document.querySelector('.inverse-content img');
+window.addEventListener('scroll', e => {
+    secondBodyImg.style.transform = `rotate(${window.scrollY / 5}deg)`
+});
