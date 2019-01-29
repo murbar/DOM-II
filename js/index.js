@@ -42,3 +42,13 @@ const secondBodyImg = document.querySelector('.inverse-content img');
 window.addEventListener('scroll', e => {
     secondBodyImg.style.transform = `rotate(${window.scrollY / 5}deg)`
 });
+
+// 7 - keyup
+const logotype = document.querySelector('header h1');
+window.addEventListener('keyup', e => {
+    if (e.key === "Escape") {
+        logotype.textContent = 'Fun Bus';
+    } else {
+        logotype.textContent = e.key;
+    }
+});
